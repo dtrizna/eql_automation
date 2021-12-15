@@ -1,6 +1,6 @@
 # Automation and handling of complex EQL queries
 
-This automation logic allows to execute complex EQL queries against multiple indices either in `sequential` (one EQL query per index at a time for low capacity elastic clusters) of `parallel` (execute queries against all indices behind pattern and collect results) manner.
+This logic allows to execute complex EQL queries against multiple indices either in `sequential` (one EQL query per index at a time for low capacity elastic clusters) of `parallel` (execute queries against all indices behind pattern and collect results) manner.
 
 ## Usage
 ```
