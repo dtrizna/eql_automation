@@ -1,0 +1,23 @@
+{
+  "size": 1000, # how many results to return
+  "fetch_size": 5000, # how many events are queried at a time
+  "event_category_field": "event.action", 
+  "query": """
+    sequence by host.name with maxspan=1m
+      [network_flow where event.action == "network_flow" and process.name : "java" and not 
+                          cidrMatch(destination.ip, "127.0.0.0/24", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16")] by process.pid
+      [process_started where process.name : (
+                          "sh", 
+                          "sudo",
+                          "bash", 
+                          "dash", 
+                          "ksh", 
+                          "tcsh", 
+                          "zsh", 
+                          "curl",
+                          "perl*",
+                          "python*",
+                          "ruby*",
+                          "php*", 
+                          "wget")] by process.ppid"""
+}

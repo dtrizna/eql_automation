@@ -1,0 +1,21 @@
+{
+  "size": 5, # how many results to return
+  "fetch_size": 1000, # how many events are queried at a time
+  "event_category_field": "event.action", 
+  "query": """
+    process_started where process.name : ("sh", 
+                          "sudo",
+                          "bash", 
+                          "dash", 
+                          "ksh", 
+                          "tcsh", 
+                          "zsh", 
+                          "curl",
+                          "perl*",
+                          "python*",
+                          "ruby*",
+                          "php*", 
+                          "wget"
+                        ) and user.name == "root"
+    """
+}

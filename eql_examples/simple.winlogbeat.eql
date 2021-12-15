@@ -1,0 +1,14 @@
+{
+    "size": 5, # how many results to return
+    "fetch_size": 5000, # how many events are queried at a time
+    "query":
+        """
+            process where process.name: (
+                "cmd.exe", 
+                "powershell.exe", 
+                "curl.exe", 
+                "wscript.exe", 
+                "cscript.exe"
+            ) and user.name == "SYSTEM"
+        """
+}

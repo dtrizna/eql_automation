@@ -1,0 +1,10 @@
+{
+            "size": 1000, # how many results to return
+            "fetch_size": 5000, # how many events are queried at a time
+            "query":
+                """
+                sequence by host.name with maxspan=1m
+                    [network where process.name: "java.exe" and not cidrMatch(destination.ip, "127.0.0.0/24", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16")] by process.pid
+                    [process where process.name: ("cmd.exe", "powershell.exe", "curl.exe", "wscript.exe", "cscript.exe")] by process.parent.pid
+                """
+}
